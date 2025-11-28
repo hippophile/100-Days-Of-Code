@@ -1,8 +1,8 @@
 """ 
-The classic too high/low game in CLI
+The classic Number Guessing game in CLI
 """
 
-print("Welcome to the NUmber Guessing Game!")
+print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100")
 
 dif = input("Choose a difficulty. Type 'easy' or 'hard': ")
