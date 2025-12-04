@@ -55,7 +55,6 @@ def winner(p, c):
     elif c < 22 and p < 22 and c == p :
         return "None"
 
-
 exitMes = "You successfully exited the game"
 mes = "Do you want to Stand or Hit? s/h: "
 
