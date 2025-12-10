@@ -6,4 +6,4 @@ from art import artsy
 # shaping(10)
 # walking(1000)
 # spiro(5)
-artsy()
+artsy(5, 7)

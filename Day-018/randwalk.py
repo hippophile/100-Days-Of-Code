@@ -6,7 +6,7 @@ def walking(x):
     screen = Screen()
     t = Turtle()
 
-    t.screen.title('Random Turtle Wlk')
+    t.screen.title('Random Turtle Walk')
     t.screen.bgcolor("black")
 
     t.shape("turtle")
