@@ -13,7 +13,7 @@ def walking(x):
     t.pensize(10)
     t.speed(10)
 
-    for i in range(0,x):
+    for i in range(x):
         t.color(random_color())
         t.right(random.choice([0, 90, 180, -90]))
         t.forward(30)
