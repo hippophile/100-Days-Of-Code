@@ -1,5 +1,5 @@
 # if you dont think that this here is not art guess what?
-# Many painting just like this were sold from a few handreds thousand to a few millions dollars
+# Many painting just like this were sold from a few hundreds thousand to a few millions dollars
 
 from turtle import Turtle, Screen, colormode
 from shapes import random_color
