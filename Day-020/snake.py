@@ -1,11 +1,15 @@
 from turtle import Turtle 
 
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 class Snake:
 
     def __init__(self):
         self.all_segments = []
         self.create_snake(3)
-        
+        self.head = self.all_segments[0]
 
 
     def create_snake(self, length,):
@@ -24,27 +28,20 @@ class Snake:
             self.all_segments[i].goto(new_x, new_y)
 
         self.all_segments[0].forward(20)
-        self.all_segments[0].rt(90)
 
+    def up(self):
+        if self.head.heading() != DOWN:
+            self.head.seth(UP)
 
-# def forwards(t):
-#     t.seth(0)
-#     t.forward(10)
+    def left(self):
+        if self.head.heading() != RIGHT:
+            self.head.seth(LEFT)
 
-# def left(t):
-#     t.seth(270)
-#     t.forward(10)
+    def right(self):
+        if self.head.heading() != LEFT:
+            self.head.seth(RIGHT)
 
-# def right(t):
-#     t.seth(90)
-#     t.forward(10)
+    def down(self):
+        if self.head.heading() != UP:
+            self.head.seth(DOWN)
 
-# def down():
-#     Turtle.setheading(180)
-#     Turtle.forward(10)
-
-
-# screen.onkey(key="w", fun=forwards)
-# screen.onkey(key="s", fun=down)
-# screen.onkey(key="a", fun=left)
-# screen.onkey(key="d", fun=right)
