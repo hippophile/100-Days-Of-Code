@@ -1,15 +1,18 @@
 from turtle import Turtle 
+from scoreboard import Scoreboard
 
 UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-class Snake:
+snake_len = 10
+class Snake():
 
     def __init__(self):
         self.all_segments = []
-        self.create_snake(3)
+        self.create_snake(snake_len)
         self.head = self.all_segments[0]
+        self.player_lost = False
 
 
     def create_snake(self, length,):
@@ -20,6 +23,7 @@ class Snake:
             new_t.penup()
             new_t.goto(x=-20*i, y=0)
             self.all_segments.append(new_t)
+        
 
     def move(self):
         for i in range(len(self.all_segments)-1, 0, -1):
@@ -28,6 +32,9 @@ class Snake:
             self.all_segments[i].goto(new_x, new_y)
 
         self.all_segments[0].forward(20)
+        if self.head.xcor() > 290 or self.head.xcor() < -290 or self.head.ycor() > 290 or self.head.ycor() < -290:
+            self.player_lost = True
+
 
     def up(self):
         if self.head.heading() != DOWN:
@@ -44,4 +51,3 @@ class Snake:
     def down(self):
         if self.head.heading() != UP:
             self.head.seth(DOWN)
-
