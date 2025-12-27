@@ -1,5 +1,6 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
 import time
 
 screen = Screen()
@@ -10,6 +11,7 @@ screen.tracer(0)
 
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
+ball = Ball()
 
 screen.listen()
 screen.onkey(r_paddle.up, "Up")
@@ -25,7 +27,14 @@ game_is_on = True
 while game_is_on:
     screen.update()
     # time.sleep(0.1)
+    ball.move()
 
+    # collision with paddle 
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 340:
+        ball.r_paddle_col()
+        
+    if ball.distance(l_paddle) < 50 and ball.xcor() < -340:
+        ball.l_paddle_col()
 
 
 
