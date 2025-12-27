@@ -1,5 +1,4 @@
 from turtle import Turtle
-from paddle import Paddle
 import time
 import random
 
@@ -9,6 +8,7 @@ class Ball(Turtle):
     p_col = False
     l_score = 0
     r_score = 0
+    speeds = 1
 
     def __init__(self):
         super().__init__()
@@ -16,7 +16,7 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.seth(random.randint(0,360))
-        self.speed("slowest")
+        self.speed(self.speeds)
 
     # make the move according to the collision
     def move(self):
@@ -41,6 +41,7 @@ class Ball(Turtle):
         if self.ycor() > 380 or self.ycor() < -380:
             self.y_col = True
             return self.y_col
+        
 
     # check collisions with walls and assign point
     def x_collision(self):
@@ -56,8 +57,11 @@ class Ball(Turtle):
     def r_paddle_col(self):
         self.seth(180-(self.heading()))
         self.forward(10)
+        self.speeds += 1
 
     def l_paddle_col(self):
         self.seth(180-(self.heading()))
         self.forward(10)
+        self.speeds += 1
+
         

@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 screen = Screen()
@@ -9,9 +10,12 @@ screen.bgcolor("black")
 screen.title("Ping Pong Game")
 screen.tracer(0)
 
+
+
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(r_paddle.up, "Up")
@@ -36,6 +40,7 @@ while game_is_on:
     if ball.distance(l_paddle) < 50 and ball.xcor() < -340:
         ball.l_paddle_col()
 
+    scoreboard.refresh_score(ball.l_score, ball.r_score)
 
 
 screen.exitonclick()
