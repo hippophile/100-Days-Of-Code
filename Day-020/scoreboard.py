@@ -3,16 +3,17 @@ from turtle import Turtle
 COLOR = "gold"
 
 class Scoreboard(Turtle):
-    score = 0 
+    
 
     def __init__(self):
         super().__init__()
         self.ht()
+        self.score = 0
         
     def refresh_score(self):
-        self.reset()
+        self.clear()
         self.ht()
-        self.penup
+        self.penup()
         self.goto(0, 250)
         self.color(COLOR)
 
@@ -22,8 +23,8 @@ class Scoreboard(Turtle):
     
     def game_over(self):
         self.goto(0, 0)
-        self.color(COLOR)
-        text = f"Game Over\n   Score: {Scoreboard.score}"
+        self.color("gold")
+        text = f"Game Over\n   Score: {self.score}"
         self.write(text, align="center", font=('Arial', 28, 'normal'))
 
 
