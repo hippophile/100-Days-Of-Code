@@ -1,5 +1,7 @@
 from turtle import Turtle
 
+COLOR = "gold"
+
 class Scoreboard(Turtle):
     score = 0 
 
@@ -12,7 +14,7 @@ class Scoreboard(Turtle):
         self.ht()
         self.penup
         self.goto(0, 250)
-        self.color("gold")
+        self.color(COLOR)
 
         self.score += 1
         text = f"Score: {self.score}"
@@ -20,7 +22,7 @@ class Scoreboard(Turtle):
     
     def game_over(self):
         self.goto(0, 0)
-        self.color("gold")
+        self.color(COLOR)
         text = f"Game Over\n   Score: {Scoreboard.score}"
         self.write(text, align="center", font=('Arial', 28, 'normal'))
 

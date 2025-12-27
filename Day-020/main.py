@@ -27,16 +27,20 @@ while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
-    
-    
+
+    # check losing conditions
+    snake.check_game()
 
     # check collision with food
     if snake.head.distance(food) < 15:
         scoreboard.refresh_score()
+        snake.extend()
         food.refresh()
 
+    # check collision with wall
     if snake.player_lost == True :
         scoreboard.game_over()        
         game_is_on = False
+
 
 screen.exitonclick()
