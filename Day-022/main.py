@@ -1,64 +1,46 @@
 from turtle import Screen
-from player import Player
-from cars import Car
+from paddle import Paddle
+from ball import Ball
 from scoreboard import Scoreboard
 import time
-import random
 
 screen = Screen()
 screen.setup(800, 800)
 screen.bgcolor("black")
-screen.title("Turtle Crossing")
+screen.title("Ping Pong Game")
 screen.tracer(0)
 
-# classes
 
-player = Player()
-all_cars = []
-counter = 0
+
+r_paddle = Paddle((350, 0))
+l_paddle = Paddle((-350, 0))
+ball = Ball()
 scoreboard = Scoreboard()
 
-# screen
 screen.listen()
-screen.onkey(player.move, "Up")
-score = 0
+screen.onkey(r_paddle.up, "Up")
+screen.onkey(r_paddle.down, "Down")
+screen.onkey(l_paddle.up, "w")
+screen.onkey(l_paddle.down, "s")
 
-# game loop
-spawn_rate = 10
+
 game_is_on = True
+ 
+
 
 while game_is_on:
-    screen.update()    
-    time.sleep(0.05)
-    scoreboard.refresh_score(score)
-    counter += 1
+    screen.update()
+    # time.sleep(0.1)
+    ball.move()
 
-
-    if counter >= spawn_rate:
-        new_car = Car(random.randint(-390, 350))
-        all_cars.append(new_car)
-        counter = 0
-
-    for car in all_cars:
-        car.move()
-
-        if car.xcor() < -390:
-            car.ht()
-            all_cars.remove(car)
-
-        if car.distance(player) < 15:
-            
-            scoreboard.game_over(score)
-            print(f"Game over at score : {score}")
-            screen.update()
-            game_is_on = False
+    # collision with paddle 
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 340:
+        ball.r_paddle_col()
         
+    if ball.distance(l_paddle) < 50 and ball.xcor() < -340:
+        ball.l_paddle_col()
 
-    if player.ycor() > 395:
-        score += 1
-        print(f"Score is {score} ")
-        player.goto(0, -370)
-        # spawn_rate -= 1 # THIS IS FOR MAKING MORE CARS
-        car.speeds += 2   # THSI IS FOR MAKING THE CARS FASTER
-    
+    scoreboard.refresh_score(ball.l_score, ball.r_score)
+
+
 screen.exitonclick()
